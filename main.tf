@@ -18,5 +18,6 @@ resource "aws_instance" "example" {
   tags {
     Name      = "instance-${terraform.workspace}-${count.index}"
     Terraform = "true"
+    Densify   = "rocks"
   }
 }
