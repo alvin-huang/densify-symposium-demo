@@ -18,10 +18,10 @@ jobs:
             terraform version
             terraform init
             # Do we need to create a workspace?
-            if [[ "$(terraform workspace list | grep -c master)" == "0" ]]; then
+            if [[ "$(terraform workspace list | grep -c ${CIRCLE_BRANCH})" == "0" ]]; then
               terraform workspace new ${CIRCLE_BRANCH}
-              terraform workspace select ${CIRCLE_BRANCH} 
             fi
+            terraform workspace select ${CIRCLE_BRANCH} 
             terraform plan -out=plan/${CIRCLE_BRANCH}.out
       - persist_to_workspace:
           root: ./

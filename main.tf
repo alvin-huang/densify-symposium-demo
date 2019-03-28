@@ -16,6 +16,7 @@ resource "aws_instance" "example" {
   count         = 2
 
   tags {
-    Name = "instance-${terraform.workspace}-${count.index}"
+    Name      = "instance-${terraform.workspace}-${count.index}"
+    Terraform = "true"
   }
 }
